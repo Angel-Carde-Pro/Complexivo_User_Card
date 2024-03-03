@@ -1,0 +1,125 @@
+body, html {
+    margin-left: 1rem;
+    background: #f5f5f5;
+}
+
+.business-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 650px;
+    height: 400px;
+    background: #2D3035;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.business-card-profile {
+    background: #FF5722;
+    width: 376px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.business-card-pic {
+    width: 150px;
+    display: block;
+    padding: 3px;
+    background: #d7370a;
+    border-radius: 100px;
+    border: solid 7px #d7370a;
+    margin: 0 auto;
+}
+
+.business-card-name, .business-card-title {
+    line-height: 0px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+.business-card-name {
+    font-weight: bold;
+}
+
+.business-card-title {
+    color: #e7e7e7;
+    line-height: 5px;
+    font-size: 16px;
+}
+
+.business-card-arrow {
+    margin: 0 19px;
+}
+
+.business-card-arrow:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: -20px;
+    margin-left: -20px;
+
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #FF5722;
+}
+
+.business-card-details {
+    padding: 20px;
+    color: #e6e6e6;
+    font-size: 13px;
+    line-height: 20px;
+    width: calc(100% - 276px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.business-card-details .fa {
+    color: #d9d9d9;
+    width: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.business-card-link {
+    color: #2A7F9C;
+    text-decoration: none;
+}
+
+.clearfix {
+    overflow: auto;
+    zoom: 1;
+}
+
+.data-button {
+    display: flex;
+    background-color: #FF5722;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    transition-delay: 0.2s;
+}
+
+.data-button:hover {
+    background-color: #e04717;
+    transform: scale(1.05);
+}
+
+.data-button i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
