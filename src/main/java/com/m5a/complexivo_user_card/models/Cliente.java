@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class Cliente {
 
 
-    @Value("Ange Steven")
+    @Value("Angel Steven")
     private String nombre;
 
     @Value("Cardenas Cardenas")

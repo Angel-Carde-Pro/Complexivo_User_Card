@@ -65,6 +65,11 @@ public class AppConfig {
     }
 
     @Bean
+    public Ciudad ciudad3() {
+        return new Ciudad("C2", "Loja");
+    }
+
+    @Bean
     public Sucursal sucursal1(Ciudad ciudad1) {
         return new Sucursal(ciudad1.getCodigoCiudad(), "S1", "Sucursal 1");
     }
@@ -72,6 +77,11 @@ public class AppConfig {
     @Bean
     public Sucursal sucursal2(Ciudad ciudad2) {
         return new Sucursal(ciudad2.getCodigoCiudad(), "S2", "Sucursal 2");
+    }
+
+    @Bean
+    public Sucursal sucursal3(Ciudad ciudad3) {
+        return new Sucursal(ciudad3.getCodigoCiudad(), "S3", "Sucursal 3");
     }
 
     // Bean para Empleado
@@ -83,6 +93,11 @@ public class AppConfig {
     @Bean
     public Empleado empleado2(Ciudad ciudad2, Sucursal sucursal2) {
         return new Empleado("David", "Mendieta", ciudad2.getNombreCiudad(), sucursal2.getNombreSucursal());
+    }
+
+    @Bean
+    public Empleado empleado3(Ciudad ciudad3, Sucursal sucursal3) {
+        return new Empleado("Juan", "pablo", ciudad3.getNombreCiudad(), sucursal3.getNombreSucursal());
     }
 
     @Bean("itemsFactura")

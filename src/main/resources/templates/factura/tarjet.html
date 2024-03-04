@@ -3,32 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <title>Utilizando Servicios</title>
-    <link rel="stylesheet" href="Card.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin-left: 1rem;
+            background: #f5f5f5;
+        }
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .business-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 400px;
+            background: #2D3035;
+            flex-direction: row;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .business-card-profile {
+            background: #FF5722;
+            width: 376px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .business-card-pic {
+            width: 150px;
+            display: block;
+            padding: 3px;
+            background: #d7370a;
+            border-radius: 100px;
+            border: solid 7px #d7370a;
+            margin: 0 auto;
+        }
+
+        .business-card-name, .business-card-title {
+            line-height: 0px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .business-card-name {
+            font-weight: bold;
+        }
+
+        .business-card-title {
+            color: #e7e7e7;
+            line-height: 5px;
+            font-size: 16px;
+        }
+
+        .business-card-arrow {
+            margin: 0 19px;
+        }
+
+        .business-card-arrow:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            margin-top: -20px;
+            margin-left: -20px;
+
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid #FF5722;
+        }
+
+        .business-card-details {
+            padding: 20px;
+            color: #e6e6e6;
+            font-size: 13px;
+            line-height: 20px;
+            width: calc(100% - 276px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .business-card-details .fa {
+            color: #d9d9d9;
+            width: 20px;
+            font-size: 20px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .business-card-link {
+            color: #2A7F9C;
+            text-decoration: none;
+        }
+
+        .clearfix {
+            overflow: auto;
+            zoom: 1;
+        }
+
+        .data-button {
+            display: flex;
+            background-color: #FF5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            transition-delay: 0.2s;
+        }
+
+        .data-button:hover {
+            background-color: #e04717;
+            transform: scale(1.05);
+        }
+
+        .data-button i {
+            margin-right: 8px; /* Espacio entre el ícono y el texto */
+        }
+    </style>
 </head>
+
 <body>
-<h1>Tarjetas de Perfil</h1>
-<div class="business-card clearfix">
-    <div class="business-card-profile">
-        <img class="business-card-pic"
-             src="User_Photo.png"
-             alt="profile picture"/>
-        <p class="business-card-name">Angel Cárdenas</p>
-        <p class="business-card-title">Diseñador y Programador Fullstack</p>
-    </div>
-    <div class="business-card-arrow"></div>
-    <div class="business-card-details">
-        <button class="data-button">
-            <i class="fa fa-user" aria-hidden="true"></i> MIS DATOS
-        </button>
-        <p><i class="fa fa-user"></i><strong>Nombre:</strong> Angel Cárdenas</p>
-        <p><i class="fa fa-location-dot"></i><strong>Ciudad:</strong> Cuenca</p>
-        <p><i class="fa fa-calendar-days"></i><strong>Horarios:</strong> Lunes -Viernes</p>
-        <p><i class="fa fa-envelope"></i><strong>Correo:</strong> a@gamil.com</p>
-        <p><i class="fa fa-phone"></i><strong>Celular:</strong> +593 987296412</p>
-        <p><i class="fa fa-newspaper"></i>Pagina Web: https://tecnologialatinaec-videojuegos.blogspot.com/</p>
+<h1>Tarjetas de Perfil - ANGEL CÁRDENAS</h1>
+<div class="cards-container">
+    <div class="business-card clearfix" th:each="empleado : ${empleados}">
+        <div class="business-card-profile">
+            <img class="business-card-pic" src="#" alt="profile picture"/>
+            <p class="business-card-name" th:text="${empleado.nombre + ' ' + empleado.apellido}"></p>
+            <p class="business-card-title"><span class="puesto"></span></p>
+        </div>
+        <div class="business-card-arrow"></div>
+        <div class="business-card-details">
+            <button class="data-button">
+                <i class="fa fa-user" aria-hidden="true"></i> MIS DATOS
+            </button>
+            <p><i class="fa fa-user"></i><strong>Nombre:</strong> <span
+                    th:text="${empleado.nombre + ' ' + empleado.apellido}"></span></p>
+            <p><i class="fa fa-location-dot"></i><strong>Ciudad:</strong> <span th:text="${empleado.ciudad}"></span></p>
+            <p><i class="fa fa-location-dot"></i><strong>Sucursal:</strong> <span th:text="${empleado.sucursal}"></span>
+            </p>
+            <p><i class="fa fa-calendar-days"></i><strong>Fecha y hora:</strong> <span
+                    th:text="${#dates.format(#calendars.createNow(), 'dd/MM/yyyy HH:mm:ss')}"></span></p>
+
+            <p><strong>CAMBIAR FOTO DE PERFIL</strong></p>
+            <input type="file" accept="image/jpeg, image/png, image/webp">
+            <button style="margin-top: 7px" onclick="guardarFoto(this)">Guardar Foto</button>
+        </div>
     </div>
 </div>
+
+
+<script>
+    var puestos = ["Desarrollador", "Analista de sistemas", "Ingeniero de software", "Diseñador y Programador Fullstack"];
+
+    function seleccionarPuestoAleatorio() {
+        var puestoAleatorio = puestos[Math.floor(Math.random() * puestos.length)];
+        return puestoAleatorio;
+    }
+
+    var tarjetas = document.querySelectorAll('.business-card-title');
+    tarjetas.forEach(function (tarjeta) {
+        tarjeta.querySelector('.puesto').innerText = seleccionarPuestoAleatorio();
+    });
+
+    function guardarFoto(button) {
+        var tarjeta = button.closest('.business-card');
+        var input = tarjeta.querySelector('input[type="file"]');
+        var fotoPerfil = tarjeta.querySelector('.business-card-pic');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                fotoPerfil.src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 </body>
 </html>
